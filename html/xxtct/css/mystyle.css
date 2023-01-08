@@ -1,0 +1,13 @@
+*{
+    text-align: center;
+    resize:none;
+}
+.button_open{
+    width: 100px;
+}
+.iframe_box{
+    position: absolute;
+    z-index: 2;
+    top: 148px;
+    left: 50px;
+}

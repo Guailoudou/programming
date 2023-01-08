@@ -1,0 +1,30 @@
+<html> 
+    <head> 
+        <meta charset="utf-8">
+        <!-- 作者：乖漏斗&NHD（是一个人） -->
+        <title>beta|学习通查题</title> 
+        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+        <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    </head> 
+    <body> 
+    <h1>学习通查题助手</h1><p>因为不允许跨域访问，所以只能手动复制提交</p>
+    <h2>输入题目：</h2><br><button onclick="clear_open()">清空</button><br>
+    <textarea id="tm" name="tm" rows="10" cols="40" autocomplete="off" placeholder="这里输入题目奥，题目下面类型注意一下"></textarea><br>
+    <a>题目类型:</a><b><a id="type_text_" >单选题模式</a></b><br>
+    <button onclick="danx()">单选题</button>
+    <button onclick="duox()">多选题</button>
+    <button onclick="pand()">判断题</button><br>
+    <button onclick = "open_()" class="button_open">提交</button><br>
+    <a>提交后会行打开一个页面，可复制新页面里面的内容粘贴到下面翻译（内容为Unicode编码）</a><br><b>data后面是答案</b><br><h2>Unicode翻译器</h2>
+    <textarea id="fyi" name="tm" rows="10" cols="40" autocomplete="off"  placeholder="这里是翻译器，接口返回的是Unicode编码"></textarea>
+    <br><button onclick = "fanyi()" class="button_open">翻译</button><br><a>翻译的内容：</a>
+    <div id="neir"></div>
+        <div id="ifbox"></div>
+        
+<script src="js/script.js"></script>
+<!-- 作者：乖漏斗&NHD（是一个人） -->
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+ 
+    </body>   
+</html>
