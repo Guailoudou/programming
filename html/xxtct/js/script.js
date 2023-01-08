@@ -21,24 +21,6 @@ function open_(){
     tmu = document.getElementById('tm').value;
     url_ = host + tmu + "&type=" + type_;
     console.log(url_);
-    //   $.ajax({
-    //         url:url_,
-    //         type:"get",
-             //dataType:"jsonp",     // 伪造ajax  基于script
-             //jsonp: 'callbacks',
-             //jsonpCallback:"alex",
-    //         success:function (data) {
-    //            console.log(data)
-    //         }
-    //     })
-    // var txt = document.createElement("iframe"); //新建html元素<a>为函数txt
-    // txt.setAttribute('id','beat');
-    // txt.setAttribute('width','70%');
-    // txt.setAttribute('height','120');
-    // txt.setAttribute('class','iframe_box');
-    // txt.setAttribute('src',url_);
-    // console.log(txt)
-    // document.getElementById("ifbox").appendChild(txt);
     window.open(url_);
 }  
     
