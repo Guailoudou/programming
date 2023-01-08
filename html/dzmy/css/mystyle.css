@@ -1,0 +1,29 @@
+/* .txt{
+    color: rgb(250, 1, 1);
+    display: block;
+}
+.button_no{
+    display: none;
+}
+.button_yes{
+    display: block;
+} */
+.img_muyu{
+    width: 100%;
+}
+body{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    user-select: none; /* 下面都是禁止选择 */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+.don{
+    z-index: 2;
+    position: absolute;
+    top: 25%;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+}
