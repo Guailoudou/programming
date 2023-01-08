@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html><head>
+    <title>弹窗提示</title>
+    </head>
+<style>
+    *{text-align: center;} /* 所有元素居中对齐 */
+    .alert_open {
+        display: block; /* 显示模式none不显示 */    /* css意义查询 https://developer.mozilla.org/zh-CN/docs/Web/CSS/ */
+        position: fixed; /* 堆叠方式 */
+        top: 33%; /* 离顶部的距离 */
+        left: 30%; /* 离左边框的距离 */
+        width: 55%; /* 盒子宽度 */
+        height: 55%; /* 盒子高度 */
+        max-width: 238px; /* 盒子最大宽度 */
+        max-height: 155px; /* 盒子最大高度 */
+        padding: 20px; /* 表格单元的每个边拥有相等的内边距 */
+        border: 1px solid rgba(241, 234, 234, 0.726); /* 边框大小和颜色 */
+        background-image: url(/tp/quartz_block_side.png); /* 背景图片   图片就没有一起上传了*/  
+        background-size: 25px 25px; /* 背景单个大小 */
+        border-radius: 25px; /* 圆角 */
+        z-index: 3; /* 堆叠高度 */
+        overflow: hidden; /* 溢出的处理方式 */
+        user-select: none; /* 下面都是禁止选择 */
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    
+    }
+    .stop {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.473); /* 背景颜色 */
+    }
+    </style>
+    <script type="text/javascript">
+        function closeDialog(){  /* closeDialog()为触发器 */
+            //document.getElementById('light').style.display='none'; /* 将id为light的元素的css的display属性改为none */
+            document.getElementById('light1').style.display='none';
+            document.getElementById('light2').style.overflow='auto';
+        } 
+    </script>
+<body>
+<div class="stop" id="light1">
+    <div class="alert_open" id="light">
+        <table>
+            <tr>
+                <td><b style="font-size: 22px;">重要提示</b></td>
+                <td style="text-align: right;" onclick = "closeDialog()" title="点我叉掉">✘</td>
+            </tr>
+            <tr>
+                <td>注意！本站公网仅ipv6可访问 </td>
+            </tr>
+            <tr>
+                <td>能打开说明你的网络<b>支持ipv6</b></td>
+            </tr>
+            <tr>
+                <td>本网站在我个人电脑上运行</td>
+            </tr>
+            <tr>
+                <td>电脑关闭之后无法访问</td>
+            </tr>
+            <tr>
+                <td title="域名没备案啊">-by NHD|*禁止宣传*</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+</body>
+</html>
