@@ -10,7 +10,24 @@
 //     document.getElementById('button1').style.display='none';
 //     document.getElementById('button2').style.display='block';
 //         }
-var n = document.cookie; //读取cookie里面的数据赋值到n
+var cook = document.cookie; //读取cookie
+console.log(cook);
+var arrCookie=cook.split("; "); //以;分隔数据 一定要加空格 cookie 数据之间有个空格
+console.log(arrCookie);
+var n
+//遍历cookie数组，处理每个cookie对
+for(var i=0;i<arrCookie.length;i++){ //从第1组开始，每循环一次i+1（0为第一组） 
+    console.log(i);
+ var arr=arrCookie[i].split("="); //获取arrcookie里面的第i组数据 以=分隔成若干数组 把这个数组保存在arr
+ console.log(arr);
+  //找到名称为n的cookie，并返回它的值
+ if("n"==arr[0]){ //判断arr数组第一个数据是不是n，是n就执行下面指令，不是if直接跳过，开始下一个for循环
+ n=arr[1]; //把arr这个数组的第二个数据保存在n里面
+break; //结束for
+}
+}
+console.log(n);
+
 var date=30;  
 var txt;
 var year= new Date(new Date().getTime() + date*24*60*60*1000); //转化时间30天
@@ -21,14 +38,14 @@ var wav = new Audio('wav/percussion instrument.wav') //读取音频文件
 function suzi(){  //suzi()的触发器
     n ++   //n的值+1
     document.getElementById('shuz').innerHTML=n; //将id为shuz的元素显示的内容换成n
-    document.cookie="=" + n + ";" + "expires="+year; //将n的值写入cookie存储30天
+    document.cookie="n=" + n + ";" + "expires="+year; //将n的值写入cookie存储30天
     donhua()
     wav.play();  //播放音频
         }
 function qinkon(){
     n = 0
     document.getElementById('shuz').innerHTML=n;
-    document.cookie="=" + n + ";" + "expires="+year;
+    document.cookie="n=" + n + ";" + "expires="+year;
 }
 var user = navigator.userAgent.toLowerCase(); //获取用户设备数据
     var platform;
