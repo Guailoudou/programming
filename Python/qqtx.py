@@ -1,7 +1,7 @@
 import requests
 print("请输入QQ号，然后按OK，即可获取你的QQ头像")
 n = 1
-while n < 10:
+while n == 10:
  QQ =  input("QQ：")
  url = "https://q1.qlogo.cn/g?b=qq&nk="+ QQ +"&s=0"
  myfile = requests.get(url)
