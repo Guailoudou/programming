@@ -3,4 +3,6 @@
 这里只是我学习过程中打的一些文件<br>
 也方便我之后自己查看<br>
 所以内容很杂<br>
-原神抽卡模拟器：<a herf="https://github.com/Guailoudou/programming/blob/main/Python/%E5%8E%9F%E7%A5%9E%E6%8A%BD%E5%8D%A1%E5%87%BA%E9%87%91%E6%A6%82%E7%8E%87%E6%A8%A1%E6%8B%9F.py">python的</a>
+# 一些有趣的东西<br>
+Python：<a href="https://github.com/Guailoudou/programming/blob/main/Python/%E5%8E%9F%E7%A5%9E%E6%8A%BD%E5%8D%A1%E5%87%BA%E9%87%91%E6%A6%82%E7%8E%87%E6%A8%A1%E6%8B%9F.py">原神抽卡模拟器</a><br>
+HTML:<a href="https://github.com/Guailoudou/programming/tree/main/html/dzmy">电子木鱼</a>
