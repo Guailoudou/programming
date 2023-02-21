@@ -1,19 +1,5 @@
-
-// function openDialog(){
-//     document.getElementById('txt').style.display='block';
-//     document.getElementById('botton1').style.display='block';
-//     document.getElementById('button2').style.display='none';
-
-//         }
-// function closeDialog(){
-//     document.getElementById('txt').style.display='none';
-//     document.getElementById('button1').style.display='none';
-//     document.getElementById('button2').style.display='block';
-//         }
 var cook = document.cookie; //读取cookie
-console.log(cook);
 var arrCookie=cook.split("; "); //以;分隔数据 一定要加空格 cookie 数据之间有个空格
-console.log(arrCookie);
 var n
 //遍历cookie数组，处理每个cookie对
 for(var i=0;i<arrCookie.length;i++){ //从第1组开始，每循环一次i+1（0为第一组） 
@@ -26,8 +12,9 @@ for(var i=0;i<arrCookie.length;i++){ //从第1组开始，每循环一次i+1（0
 break; //结束for
 }
 }
-console.log(n);
-
+if(n="undefined"){
+    n = 0;
+}
 var date=30;  
 var txt;
 var year= new Date(new Date().getTime() + date*24*60*60*1000); //转化时间30天
