@@ -43,7 +43,7 @@ def login():
         print("出现了意料之外的结果,开始导出错误反馈日志")
         open('web-err.log','w').write(x.text)
         print("导出完毕，请将web-err.log文件提交给我，这有助于我修复这个问题，文件在程序本体位置")
-        print("我的联系方式--QQ：124193334 Email：Guailoudou@163.com")
+        print("我的联系方式--QQ：1241593334 Email：Guailoudou@163.com")
         os.system("pause")
 
 net = requests.get(url)
