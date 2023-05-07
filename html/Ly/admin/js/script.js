@@ -57,11 +57,43 @@ function reg(){
     document.getElementById('loginui').style.display='none';
     document.getElementById('regui').style.display='flex';
 }
-function del() { 
-    var msg = "您确定要删除该内容吗？"; 
-    if (confirm(msg)==true){ 
-     return true; 
-    }else{ 
-     return false; 
-    } 
-   } 
+function del() {
+    var msg = "您确定要删除该内容吗？";
+    if (confirm(msg) == true) {
+        return true;
+    } else {
+        return false;
+    }
+} 
+function password(){
+    var user = document.getElementById('user').value;
+    var pass1 = document.getElementById('password1').value;
+    var pass2 = document.getElementById('password2').value;
+    if(pass1 != pass2){
+        alert("2次输入的密码不一样嘞，再检查一下");
+        return false;
+    } else if(pass1 == ""){
+        alert("密码嘞？");
+        return false;
+    } else if(user == ""){
+        alert("账户嘞？");
+        return false;
+    } else if(user.length<=4){
+        alert("账户名太短了吧");
+        return false;
+    } else if(pass1.length<=4){
+        alert("密码太短了吧");
+        return false;
+    } else{
+        return true;
+    }
+}
+function login(){
+    var user = document.getElementById('luser').value;
+    if(user == "" || user.length<=4){
+        alert("用户名不合法！");
+        return false;
+    }else{
+        return true;
+    }
+}
