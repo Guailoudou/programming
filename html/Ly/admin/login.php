@@ -38,7 +38,7 @@ function regname(){
         while($row = mysqli_fetch_assoc($result)) {
             if ($row["username"]==hash("sha256",$_POST['username'])){
                $err = 1; 
-               echo "<script>alert('该用户名已经被注册了');location.href='/';</script>";
+               echo "<script>alert('该用户名已经被注册了');history.go(-1);</script>";
         }
         }
         if($err!=1)reg();
