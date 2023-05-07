@@ -1,3 +1,4 @@
+//该文件已弃用
 <?php
 error_reporting(0);
 if($_POST['txt'] != ""){
