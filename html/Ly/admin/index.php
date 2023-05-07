@@ -87,13 +87,13 @@ echo <<<EOF
 		<form method="post" action="login.php?type=2">
 			<div class="input-wrapper">
 				<label>账号:</label>
-				<input type="text" name="username" placeholder="请输入账号">
+				<input type="text" name="username" id="luser" placeholder="请输入账号">
 			</div>
 			<div class="input-wrapper">
 				<label>密码:</label>
-				<input type="password" name="passworld" placeholder="密码">
+				<input type="password" name="passworld" id="lpaasword" placeholder="密码">
 			</div>
-			<input type="submit" id="button" value="登录">
+			<input type="submit" id="button" onclick="javascript:return login()" value="登录">
 		</form>
 		<a href="javascript:reg()">注册</a>
 	</div>
@@ -106,13 +106,17 @@ echo <<<EOF
 		<form method="post" action="login.php?type=1">
 			<div class="input-wrapper">
 				<label>账号:</label>
-				<input type="text" name="username" placeholder="请输入账号-请一定要记住，忘记后无法找回">
+				<input type="text" name="username" id="user" placeholder="请输入账号-请一定要记住，忘记后无法找回">
 			</div>
 			<div class="input-wrapper">
 				<label>密码:</label>
-				<input type="password" name="passworld" placeholder="密码-请一定要记住，忘记后无法找回">
+				<input type="password" name="passworld" id="password1" placeholder="请输入密码-请一定要记住，忘记后无法找回">
 			</div>
-			<input type="submit" id="button" value="注册">
+			<div class="input-wrapper">
+				<label>再输入一次密码:</label>
+				<input type="password" id="password2" placeholder="请输入密码">
+			</div>
+			<input type="submit" id="button" onclick="javascript:return password()" value="注册">
 		</form>
 		<a href="javascript:csh()">登录</a>
 	</div>
