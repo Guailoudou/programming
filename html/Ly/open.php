@@ -1,3 +1,4 @@
+//该文件已弃用
 <!DOCTYPE html>
 <head>
     <title>查看留言</title>
