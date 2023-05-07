@@ -13,6 +13,9 @@ div.fixed {
   height: 30px;
   border-radius: 5px;
   border: 3px solid #73AD21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 div.fixed2 {
   position: fixed;
@@ -22,6 +25,9 @@ div.fixed2 {
   height: 30px;
   border-radius: 5px;
   border: 3px solid #73AD21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 div.fixed3 {
   position: fixed;
@@ -31,6 +37,9 @@ div.fixed3 {
   height: 30px;
   border-radius: 5px;
   border: 3px solid #73AD21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .bc{
     margin-top: 35px;
@@ -66,8 +75,8 @@ img{
 <div class="cd">
 <?php
 $servername = "localhost";
-$username = "***";
-$password = "***";
+$username = "root";
+$password = "qwertyuiop";
 $dbname = "web";
 $connect=mysqli_connect($servername, $username, $password, $dbname);//连接数据库
 global $connect;
@@ -75,11 +84,10 @@ echo "<iframe frameborder='no' border='0' marginwidth='0' marginheight='0' width
 ?>
 </div>
 <div class="bc">
-
+<h2><a href="admin" style="color:black;"><i class="bi bi-chat-left-dots"></i></a>留言记录~</h2><br>
 <?php
 //error_reporting(0);
 //if($_POST['txt'] != ""){
-echo "<h2><a href='admin' style='color:black;'><i class='material-icons'>sms</i></a>留言记录~</h2><br>";
 main();
 function main(){
     $sql = "SELECT txt, name, time ,uid FROM ly";
@@ -109,13 +117,13 @@ echo "<h2><a id='end'>-----~到这里就结束了呢~-----</a></h2><br>";
 ?>
 </div> 
 <div class="fixed"><a href="#end" title="回到底部">
-<i class="material-icons">arrow_downward</i></a>
+<i class="bi bi-arrow-down"></i></a>
 </div>
 </div> 
 <div class="fixed3"><a href="" title="刷新">
-<i class="material-icons">refresh</i></a>
+<i class="bi bi-arrow-clockwise"></i></a>
 </div>
 <div class="fixed2"><a href="/" title="点我返回">
-<i class="material-icons">subdirectory_arrow_left</i></a>
+<i class="bi bi-arrow-return-left"></i></a>
 </div>
 </body>

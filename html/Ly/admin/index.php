@@ -8,8 +8,8 @@
 <?php
 error_reporting(0);
 $servername = "localhost";
-$username = "***";
-$password = "***";
+$username = "root";
+$password = "qwertyuiop";
 $dbname = "web";
 $connect=mysqli_connect($servername, $username, $password, $dbname);//连接数据库
 global $connect;    
@@ -26,7 +26,7 @@ function main(){
 	<a href='login.php?type=3' style="margin-left: 15px;">退出登录</a><br>
 	<table border="1">
 			<tr>
-			<td>UID</td><td>ID</td><td>Time</td><td>内容</td><td>操作</td>
+			<th>UID</th><th>ID</th><th>Time</th><th>内容</th><th>操作</th>
 			</tr>
 	EOF;
     if (mysqli_num_rows($result) > 0) {
@@ -42,22 +42,34 @@ function main(){
             echo <<<EOF
 			<tr>
 			<td>$uid</td><td>$name</td><td>$time</td><td>$txt</td>
-			<td style="text-align: center;"><a href="admin.php?type=1&uid=$uid&username=$username" onclick="javascript:return del()">删除</a><a style="margin-left: 15px;" href="javascript:redo('$urlname','$urltxt','$uid','$username')">编辑</a></td>
+			<td style="text-align: center;width: 40;"><a href="admin.php?type=1&uid=$uid&username=$username" onclick="javascript:return del()">删除</a><a href="javascript:redo('$urlname','$urltxt','$uid','$username')">编辑</a></td>
 			</tr>
 			EOF;
         }
 		echo "</table><div id='ly'></div>";
 		if($_SESSION['admin']>=2){
-		echo "--------------------";
-		echo <<<EOF
-		更换音乐 输入网易云ID
-		<form method="GET" action="admin.php">
-		<input type="text" name="id">
-		<input type="hidden" name="type" value="3" >
-		<input type="submit" value="更换">
-		</form>
-		EOF;
-	}
+			echo <<<EOF
+			<div class="admin">--------------------<br>
+			更换音乐 输入网易云ID
+			<form method="GET" action="admin.php">
+			<input type="text" name="id" placeholder="例:2034742057">
+			<input type="hidden" name="type" value="3" >
+			<input type="submit" value="更换">
+			</form>
+			EOF;
+	    }
+		if($_SESSION['admin']>=3){
+			echo <<<EOF
+			--------------------<br>权限管理
+			<form method="GET" action="admin.php">
+			<input type="text" name="username" placeholder="用户名">
+			<input type="text" name="admin" placeholder="权限等级">
+			<input type="hidden" name="type" value="4" >
+			<input type="submit" value="更新">
+			</form>
+			</div>
+			EOF;
+		}
     } else {
         echo "还没有留言呢，快来留言吧";
     }
@@ -70,7 +82,7 @@ echo <<<EOF
 <div class="container" id="loginui">
 	<div class="loginBox">
 		<div class="userImage">
-			<a href="/"><img src="img/catFace.png" title="回到主页"></a>
+			<a href="/"><img style="width: 100%;" src="img/catFace.png" title="回到主页"></a>
 		</div>
 		<form method="post" action="login.php?type=2">
 			<div class="input-wrapper">
@@ -89,7 +101,7 @@ echo <<<EOF
 <div class="container" id="regui">
 	<div class="loginBox">
 		<div class="userImage">
-			<a href="/"><img src="img/catFace.png" title="回到主页"></a>
+			<a href="/"><img style="width: 100%;" src="img/catFace.png" title="回到主页"></a>
 		</div>
 		<form method="post" action="login.php?type=1">
 			<div class="input-wrapper">

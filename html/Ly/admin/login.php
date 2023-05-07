@@ -2,8 +2,8 @@
 <?php
 //error_reporting(0);
 $servername = "localhost";
-$username = "***";
-$password = "***";
+$username = "root";
+$password = "qwertyuiop";
 $dbname = "web";
 $connect=mysqli_connect($servername, $username, $password, $dbname);//连接数据库
 global $connect;
@@ -18,8 +18,8 @@ function login(){
     if(hash("sha256",$_POST['passworld'])==$key['password']){
         $_SESSION['admin']=$key['admin'];
         $_SESSION['username']=$_POST['username'];
-        setcookie('login','1',null,'/');
-        echo "<script>alert('登录成功');history.go(-1);</script>登录成功<br><a href='index.php'>返回</a>";
+        @setcookie('login','1',null,'/');
+        echo "<script>alert('登录成功');location.href='/';</script>登录成功<br><a href='index.php'>返回</a>";
     }else{
         echo "<script>alert('登录失败，账号或密码错误');history.go(-1);</script>登录失败<br><a href='index.php'>返回</a>";
     }

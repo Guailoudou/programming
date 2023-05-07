@@ -1,5 +1,4 @@
 <?php
-//该文件已弃用
 error_reporting(0);
 if($_POST['txt'] != ""){
     $add = fopen("ly.txt","a");
