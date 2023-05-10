@@ -1,12 +1,6 @@
 <?php session_start(); ?>
 <?php
-$servername = "localhost";
-$username = "*****";
-$password = "*****";
-$dbname = "web";
-$connect=mysqli_connect($servername, $username, $password, $dbname);//连接数据库
-global $connect;
-
+include("connect.php");
 function main(){
     if(@$_SESSION['admin']>=1){
         $username = $_SESSION['username'];

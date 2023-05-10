@@ -69,6 +69,7 @@ function password(){
     var user = document.getElementById('user').value;
     var pass1 = document.getElementById('password1').value;
     var pass2 = document.getElementById('password2').value;
+var bds = /^[a-zA-Z][a-zA-Z0-9_*.]{4,15}$/;
     if(pass1 != pass2){
         alert("2次输入的密码不一样嘞，再检查一下");
         return false;
@@ -78,14 +79,17 @@ function password(){
     } else if(user == ""){
         alert("账户嘞？");
         return false;
-    } else if(user.length<=4){
+    } else if(user.length<=3){
         alert("账户名太短了吧");
         return false;
     } else if(pass1.length<=4){
         alert("密码太短了吧");
         return false;
-    } else{
+    } else if(bds.test(user)||bds.test(pass1)){
         return true;
+    } else {
+        alert("账号和密码不合法，字母开头，允许5-16字节，允许字母数字_*.");
+        return false;
     }
 }
 function login(){

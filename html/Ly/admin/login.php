@@ -1,12 +1,7 @@
 <?php session_start(); ?>
 <?php
 //error_reporting(0);
-$servername = "localhost";
-$username = "*****";
-$password = "*****";
-$dbname = "web";
-$connect=mysqli_connect($servername, $username, $password, $dbname);//连接数据库
-global $connect;
+include("connect.php");
 function reg(){
     $sql = "INSERT INTO login (username,password,admin) VALUES ('".hash("sha256",$_POST['username'])."','".hash("sha256",$_POST['passworld'])."',1)";
     if(mysqli_query($GLOBALS['connect'], $sql))echo "<script>alert('注册成功');history.go(-1);</script>注册成功";

@@ -74,12 +74,7 @@ img{
 <body style="text-align: center;">
 <div class="cd">
 <?php
-$servername = "localhost";
-$username = "*****";
-$password = "*****";
-$dbname = "web";
-$connect=mysqli_connect($servername, $username, $password, $dbname);//连接数据库
-global $connect;
+include("connect.php");
 echo "<iframe frameborder='no' border='0' marginwidth='0' marginheight='0' width=330 height=86 src='//music.163.com/outchain/player?type=2&id=".music()."&auto=1&height=66'></iframe>"
 ?>
 </div>
@@ -116,14 +111,14 @@ echo "<h2><a id='end'>-----~到这里就结束了呢~-----</a></h2><br>";
 //}
 ?>
 </div> 
-<div class="fixed"><a href="#end" title="回到底部">
-<i class="bi bi-arrow-down"></i></a>
-</div>
+<a href="#end" title="回到底部"><div class="fixed">
+<i class="bi bi-arrow-down"></i>
+</div></a>
 </div> 
-<div class="fixed3"><a href="" title="刷新">
-<i class="bi bi-arrow-clockwise"></i></a>
-</div>
-<div class="fixed2"><a href="/" title="点我返回">
-<i class="bi bi-arrow-return-left"></i></a>
-</div>
+<a href="" title="刷新"><div class="fixed3">
+<i class="bi bi-arrow-clockwise"></i>
+</div></a>
+<a href="/" title="点我返回"><div class="fixed2">
+<i class="bi bi-arrow-return-left"></i>
+</div></a>
 </body>

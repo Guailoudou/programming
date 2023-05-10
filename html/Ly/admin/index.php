@@ -6,13 +6,8 @@
 	<script type="text/javascript" src="js/script.js"></script>
 </head>
 <?php
-error_reporting(0);
-$servername = "localhost";
-$username = "*****";
-$password = "*****";
-$dbname = "web";
-$connect=mysqli_connect($servername, $username, $password, $dbname);//连接数据库
-global $connect;    
+//error_reporting(0);
+include("connect.php");    
 function main(){
 	if($_SESSION['admin']>=3){
     $sql = "SELECT txt, name, time ,uid ,username FROM ly";
@@ -34,15 +29,13 @@ function main(){
         while($row = mysqli_fetch_assoc($result)) {
 		    $uid = $row["uid"];
 			$name = $row["name"];
-			$urlname = rawurlencode($name);
 			$time = $row["time"];
 			$txt = $row["txt"];
 			$username = $row['username'];
-			$urltxt = rawurlencode($txt);
             echo <<<EOF
 			<tr>
 			<td>$uid</td><td>$name</td><td>$time</td><td>$txt</td>
-			<td style="text-align: center;width: 40;"><a href="admin.php?type=1&uid=$uid&username=$username" onclick="javascript:return del()">删除</a><a href="javascript:redo('$urlname','$urltxt','$uid','$username')">编辑</a></td>
+			<td style="text-align: center;width: 40;"><a href="admin.php?type=1&uid=$uid&username=$username" onclick="javascript:return del()">删除</a><a href="edit.php?uid='$uid'&username='$username'">编辑</a></td>
 			</tr>
 			EOF;
         }
@@ -74,7 +67,7 @@ function main(){
         echo "还没有留言呢，快来留言吧";
     }
 }
-if($_SESSION['admin']>=1){
+if(@$_SESSION['admin']>=1){
 main();
 }else{
 echo <<<EOF

@@ -63,13 +63,13 @@ body, html {
     border: 1px solid #ececec; 
     margin: 10px 0;
   }
-  input[type="button"] {
+  /* input[type="button"] {
     width: 100%; 
     margin-top: 35px; 
     background-color: #32bfb2; 
     color: white; 
     font-weight: lighter;
-  }
+  } */
   .warning {
     border-color: red
   }

@@ -1,11 +1,6 @@
 <?php session_start(); ?>
 <?php
-$servername = "localhost";
-$username = "*****";
-$password = "*****";
-$dbname = "web";
-$connect=mysqli_connect($servername, $username, $password, $dbname);//连接数据库
-global $connect,$connect2;
+include("connect.php");
 function del(){
         $sql = "DELETE FROM ly WHERE uid=".$_GET['uid'];
         if(mysqli_query($GLOBALS['connect'], $sql))echo "<script>alert('删除成功');location.href='/ly/admin';</script>删除成功<br><a href='index.php'>返回</a>";
@@ -45,7 +40,7 @@ if($_GET['type'] != ""){
             if($_SESSION['admin']>=3)upadmin();
     }
     mysqli_close($connect);
-    }else echo "<script>alert('权限不足');history.go(-1);</script>权限不足";
+    }else echo "<script>alert('权限不足');location.href='/ly/admin';</script>权限不足";
 }else{
     echo "type:<br>1--del.uid<br>2--up.uid-txt<br>3--music-id<br><a href='/'>回到首页</a>";
 }
