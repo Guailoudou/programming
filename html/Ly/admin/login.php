@@ -10,10 +10,13 @@ function login(){
     $sql = "SELECT password,admin FROM login WHERE username='".hash("sha256",$_POST['username'])."'";
     $result = mysqli_query($GLOBALS['connect'], $sql);
     $key = mysqli_fetch_assoc($result);
+    if($_POST['rem']=="on")$time = time()+3600*24*30; //30天
+    else $time = null;
     if(hash("sha256",$_POST['passworld'])==$key['password']){
         $_SESSION['admin']=$key['admin'];
         $_SESSION['username']=$_POST['username'];
-        @setcookie('login','1',null,'/');
+        @setcookie('login','1',$time,'/');
+        @setcookie('username',$_POST['username'],$time,'/');
         echo "<script>alert('登录成功');location.href='/';</script>登录成功<br><a href='index.php'>返回</a>";
     }else{
         echo "<script>alert('登录失败，账号或密码错误');history.go(-1);</script>登录失败<br><a href='index.php'>返回</a>";
@@ -22,6 +25,7 @@ function login(){
 function exit_login(){
     $_SESSION['admin']=0;
     setcookie('login','',time()-3600,'/');
+    setcookie('username','',time()-3600,'/');
     echo "<script>alert('退出登录成功');location.href='/';</script>退出登录成功<br><a href='index.php'>返回</a>";
 }
 function regname(){

@@ -34,7 +34,7 @@ function main(){
 			$username = $row['username'];
             echo <<<EOF
 			<tr>
-			<td>$uid</td><td>$name</td><td>$time</td><td>$txt</td>
+			<td id="$uid">$uid</td><td>$name</td><td>$time</td><td>$txt</td>
 			<td style="text-align: center;width: 40;"><a href="admin.php?type=1&uid=$uid&username=$username" onclick="javascript:return del()">删除</a><a href="edit.php?uid='$uid'&username='$username'">编辑</a></td>
 			</tr>
 			EOF;
@@ -67,6 +67,19 @@ function main(){
         echo "还没有留言呢，快来留言吧";
     }
 }
+//自动登录
+function login()
+{
+	if(@$_COOKIE['login']==1){
+		$_SESSION['username'] = $_COOKIE['username'];
+		$sql = "SELECT admin FROM login WHERE username='".hash("sha256",$_SESSION['username'])."'";
+		$adm = mysqli_query($GLOBALS['connect'], $sql);
+		$key = mysqli_fetch_assoc($adm);
+		$admin = $key['admin'];
+		$_SESSION['admin'] = $admin;
+	}
+}
+login();
 if(@$_SESSION['admin']>=1){
 main();
 }else{
@@ -86,9 +99,10 @@ echo <<<EOF
 				<label>密码:</label>
 				<input type="password" name="passworld" id="lpaasword" placeholder="密码">
 			</div>
+			<input style="display:inline;width:20px;" type="checkbox" id="rem" name="rem" value="on"><label for="rem">保存登录状态30天</label>
 			<input type="submit" id="button" onclick="javascript:return login()" value="登录">
 		</form>
-		<a href="javascript:reg()">注册</a>
+		<a href="javascript:reg()" style="right:20px">注册</a>
 	</div>
 </div>
 <div class="container" id="regui">
@@ -111,12 +125,13 @@ echo <<<EOF
 			</div>
 			<input type="submit" id="button" onclick="javascript:return password()" value="注册">
 		</form>
-		<a href="javascript:csh()">登录</a>
+		<a href="javascript:csh()" style="right:20px">登录</a>
 	</div>
 </div>
 <script src="js/script.js"></script>
 </body>
 </html>
 EOF;
+mysqli_close($connect);
 }
 ?>

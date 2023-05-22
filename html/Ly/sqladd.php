@@ -17,7 +17,19 @@ function main(){
     $sql3 = "UPDATE uuid SET uid=".$uid+1; //把记录uid值+1
     if(mysqli_query($GLOBALS['connect'], $sql3))echo "<a href='javascript:redo()'>点我继续留言</a>";
 }
+function login()
+{
+	if(@$_COOKIE['login']==1){
+		$_SESSION['username'] = $_COOKIE['username'];
+		$sql = "SELECT admin FROM login WHERE username='".hash("sha256",$_SESSION['username'])."'";
+		$adm = mysqli_query($GLOBALS['connect'], $sql);
+		$key = mysqli_fetch_assoc($adm);
+		$admin = $key['admin'];
+		$_SESSION['admin'] = $admin;
+	}
+}
 if($_POST['txt'] != ""){
+    login();
     main();
     mysqli_close($connect);
 }else{

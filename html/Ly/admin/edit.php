@@ -22,6 +22,7 @@ function get(){
     echo "<input type='hidden' name='uid' value=".$_GET['uid'].">";
 }
 get();
+mysqli_close($connect);
 ?>
     <input type="hidden" name="type" value="2">
     <input type='submit' value='提交修改'>
