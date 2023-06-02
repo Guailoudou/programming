@@ -90,7 +90,7 @@ function main(){
     if (mysqli_num_rows($result) > 0) {
         // 输出数据
         while($row = mysqli_fetch_assoc($result)) {
-            echo "<a style='font-size: 8px;' title='".$row["uid"]."';>ID: " . $row["name"]." Time：". $row["time"]."</a><br>" . $row["txt"]."<br>";
+            echo "<a style='font-size: 8px;' title='".$row["uid"]."';>".$row["uid"]."楼 ID: " . $row["name"]." Time：". $row["time"]."</a><br>" . $row["txt"]."<br>";
         }
     } else {
         echo "还没有留言呢，快来留言吧";
