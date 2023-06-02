@@ -1,62 +1,3 @@
-var uid,username;
-function redo(nametxt,text,uid,username){
-    //获取id为ly的div元素
-    var nametxt,text,uid,username;
-    window.uid =uid;
-    window.username =username;
-    document.getElementById("ly").innerHTML="";
-var ly = document.getElementById("ly");
-//创建一个textarea元素，设置id为names，行数为1，列数为40，自动完成为on，最大长度为12，占位符为"怎么称呼你呢？"
-var names = document.createElement("textarea");
-names.id = "names";
-names.rows = 1;
-names.cols = 40;
-names.autocomplete = "on";
-names.maxlength = 12;
-names.value = nametxt;
-//创建一个br元素
-var br1 = document.createElement("br");
-//创建另一个textarea元素，设置id为txt_，行数为10，列数为40，自动完成为off，最大长度为300，占位符为"这里输入留言内容奥,不能少于3个字符&#13;快来给我留言吧~&#13;可以把你的烦恼都说出来呢~"
-var txt_ = document.createElement("textarea");
-txt_.id = "txt_";
-txt_.rows = 10;
-txt_.cols = 40;
-txt_.autocomplete = "off";
-txt_.value = text;
-//创建另一个br元素
-var br2 = document.createElement("br");
-//创建另一个br元素
-var br3 = document.createElement("br");
-//创建一个button元素，设置onclick属性为up()，class属性为bottle，文本内容为"提交"
-var button = document.createElement("button");
-button.onclick = up;
-button.className = "bottle";
-button.textContent = "提交";
-//将创建的元素依次添加到ly元素的内部
-ly.appendChild(names);
-ly.appendChild(br1);
-ly.appendChild(txt_);
-ly.appendChild(br2);
-ly.appendChild(br3);
-ly.appendChild(button);
-}
-function up(){
-    var uid=window.uid;
-    var txt = document.getElementById('txt_').value;
-    var urltxt = encodeURIComponent(txt);
-    var names = document.getElementById('names').value;
-    var urlname = encodeURIComponent(names);
-    url = "admin.php?type=2&uid="+uid+"&name="+urlname+"&txt="+urltxt+"&username="+window.username;
-    location.href=url;
-}
-function csh(){
-    document.getElementById('regui').style.display='none';
-    document.getElementById('loginui').style.display='flex';
-}
-function reg(){
-    document.getElementById('loginui').style.display='none';
-    document.getElementById('regui').style.display='flex';
-}
 function del() {
     var msg = "您确定要删除该内容吗？";
     if (confirm(msg) == true) {
@@ -69,7 +10,7 @@ function password(){
     var user = document.getElementById('user').value;
     var pass1 = document.getElementById('password1').value;
     var pass2 = document.getElementById('password2').value;
-var bds = /^[a-zA-Z][a-zA-Z0-9_*.]{4,15}$/;
+var bds = /^[a-zA-Z0-9_*.]{4,16}$/;
     if(pass1 != pass2){
         alert("2次输入的密码不一样嘞，再检查一下");
         return false;
@@ -79,16 +20,16 @@ var bds = /^[a-zA-Z][a-zA-Z0-9_*.]{4,15}$/;
     } else if(user == ""){
         alert("账户嘞？");
         return false;
-    } else if(user.length<=3){
+    } else if(user.length<4){
         alert("账户名太短了吧");
         return false;
     } else if(pass1.length<=4){
         alert("密码太短了吧");
         return false;
-    } else if(bds.test(user)||bds.test(pass1)){
+    } else if(bds.test(user)&&bds.test(pass1)&&code()){
         return true;
     } else {
-        alert("账号和密码不合法，字母开头，允许5-16字节，允许字母数字_*.");
+        alert("账号密码不符合规范，允许包含字母数字最高16位");
         return false;
     }
 }
@@ -99,5 +40,51 @@ function login(){
         return false;
     }else{
         return true;
+    }
+}
+var n = 1,key;
+function sendcode(){
+    email = document.getElementById('email').value;
+    if(email == undefined)email = document.getElementById('email').innerText;
+    var gz = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(.[a-zA-Z0-9_-]+)+$/;
+    if(gz.test(email)){
+        if(n==1){
+            n = 0;
+            document.getElementById('cd').style.backgroundColor = "#626262";
+            document.getElementById('cd').value="发送中...";
+            $.ajax({
+            url:"/Ly/mail/mail.php",
+            type:"POST",
+            dataType:"json",
+            data:{'email':email},
+            success:function(res){
+                res = JSON.parse(res)
+                var codes = res.code;
+                if(codes == 1){
+                    document.getElementById('cd').value="已发送 注意查收 可能在垃圾邮箱";
+                    key = res.key;
+                }else{
+                    alert("发送失败，检查邮箱正确性！");
+                    n = 1;
+                    document.getElementById('cd').style.backgroundColor = "#F0F0F0";
+                    document.getElementById('cd').value="获取验证码";
+                }
+            },
+            dataType:"html"
+        });
+        }else{
+            alert("验证码已发送或发送中");
+        }
+    }else{
+        alert("邮箱不合法！")
+    }
+}
+function code(){
+    var keys = document.getElementById('cds').value;
+    if(n==0&&sha256(keys)==key){
+        return true;
+    }else{
+        alert("验证码错误");
+        return false;
     }
 }
