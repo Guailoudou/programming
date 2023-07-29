@@ -59,7 +59,6 @@ int main()
     system("title openp2p-launcher-by-Guailoudou");
     std::cout << "被连接输入：0，连接输入：1，以上一次的连接方式连接输入：2 " << std::endl;
     std::cin >> type;
-    
     if (type == 0) 
     {
         play0(myuuid);
@@ -71,8 +70,10 @@ int main()
         std::cin >> uuid;
         std::cout << "请输入对方端口：" << std::endl;
         std::cin >> DstPort;
-        std::cout << "请输入本地接收端口：" << std::endl;
+        std::cout << "请输入本地连接地址的端口：\n127.0.0.1:";
         std::cin >> SrcPort;
+        std::cout << "上面这个是你本地连接的地址哦，程序2s后开始运行";
+        Sleep(2000);
         play1(SrcPort,DstPort,uuid,myuuid);
         system("bin\\openp2p.exe");
     }
@@ -85,6 +86,7 @@ int main()
         std::cout << "输入错误" << std::endl;
     }
     system("pause");
+    return 0;
 }
 ////////////////////////////////////////////////////////////////////////////
 //生成仅供连接配置
@@ -100,7 +102,7 @@ void play0(std::string myuuid)
     j["network"]["UDPPort1"] = 27182;
     j["network"]["UDPPort2"] = 27183;
     j["network"]["TCPPort"] = 50448;
-    j["LogLevel"] = 0;
+    j["LogLevel"] = 1;
     //std::cout << json::wrap(j);
     std::ofstream ofs("bin/config.json");
     ofs << std::setw(4) << configor::json::wrap(j) << std::endl;
@@ -133,7 +135,7 @@ void play1(int SrcPort,int DstPort,std::string uuid, std::string myuuid)
     root = configor::json::array({ configor::json::value(array) });
     j["apps"] = configor::json::value(root);
     
-    j["LogLevel"] = 0;
+    j["LogLevel"] = 1;
     //std::cout << configor::json::wrap(j);
     std::ofstream ofs("bin/config.json");
     ofs << std::setw(4) << configor::json::wrap(j) << std::endl;
